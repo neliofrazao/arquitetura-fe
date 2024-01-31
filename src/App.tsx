@@ -3,7 +3,31 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import { getStudent } from './api';
+// import { Outlet, Route, Routes } from 'react-router-dom';
+// const { id } = useParams() //parametro de la url;
+// const navigate = useNavigate() //navegar a otra ruta;
 
+{
+  /* <nav className='nav-header'>
+  <Link className='nav-header__link' to='/'>
+    Principal
+  </Link>
+</nav>; */
+}
+// const LayoutContainer = () => (
+//   <div>
+//     <Outlet />
+//   </div>
+// );
+// const Home = () => <div>Home</div>;
+// const ComponentsWithRoutes = () => (
+//   <Routes>
+//     <Route index path='/' element={<Home />} />
+//     <Route path='/home' element={<Home />}>
+//       <Route path=':id' element={<Home />} />
+//     </Route>
+//   </Routes>
+// );
 function App() {
   const [count, setCount] = useState(0);
 
