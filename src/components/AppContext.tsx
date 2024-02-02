@@ -8,6 +8,14 @@ interface AppState {
 interface Action {
   type: ActionType;
 }
+interface AppProviderProps {
+  children: ReactNode;
+}
+
+interface AppContextType {
+  state: AppState;
+  dispatch: React.Dispatch<Action>;
+}
 
 const appReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
@@ -20,16 +28,7 @@ const appReducer = (state: AppState, action: Action): AppState => {
   }
 };
 
-interface AppContextType {
-  state: AppState;
-  dispatch: React.Dispatch<Action>;
-}
-
 const AppContext = createContext<AppContextType | undefined>(undefined);
-
-interface AppProviderProps {
-  children: ReactNode;
-}
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, { count: 0 });
