@@ -1,0 +1,44 @@
+{
+    "alunos": [
+      {
+        "name": "Joâo Maria Joséwwe",
+        "registration": "003",
+        "course": "Sistemas para internet",
+        "id": 3
+      },
+      {
+        "name": "Pessoa da Silba",
+        "registration": "003",
+        "course": "Sistemas para internet",
+        "id": 4
+      },
+      {
+        "name": "Pessoa 3",
+        "registration": "0067",
+        "course": "Redes",
+        "id": 5
+      },
+      {
+        "name": "Pessoa da Silba",
+        "course": "Redes",
+        "registration": "003",
+        "id": 6
+      },
+      {
+        "name": "Pessoa da Silba",
+        "course": "Sistemas para internet",
+        "registration": "007",
+        "id": 7
+      }
+    ],
+    "disciplinas": [
+      {
+        "id": 1,
+        "name": "Introdução a progração com scripts",
+        "courseWorkload": "36h",
+        "professor": "Tiago Daniel Fernando Baptista",
+        "status": "Obrigatória",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      }
+    ]
+  }
