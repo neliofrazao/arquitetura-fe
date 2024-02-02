@@ -33,6 +33,10 @@ interface FormState {
   email: string;
 }
 
+const ComponentWithChildren = ({ children }: { children: React.ReactNode }) => (
+  <div>{children}</div>
+);
+
 function App() {
   const initialFormStateData: FormState = {
     name: '',
@@ -85,6 +89,7 @@ function App() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <ComponentWithChildren> Teste </ComponentWithChildren>
       <div>
         <label htmlFor='name'>Nome:</label>
         <input
