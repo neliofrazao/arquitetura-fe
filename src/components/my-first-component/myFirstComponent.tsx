@@ -1,4 +1,5 @@
-import { FormComponentProps } from '../types';
+import { useCallback, useEffect, useState } from 'react';
+import { FormComponentEnum, FormComponentProps } from '../types';
 
 interface MyFirstComponentProps extends FormComponentProps {
   placeholderText?: string;
@@ -11,8 +12,9 @@ export const MyFirstComponent = ({
   value,
   placeholderText = 'Digite o texto aqui',
 }: MyFirstComponentProps) => {
+  const [inputValue, setInputValue] = useState('');
+
   // console.log('MyFirstComponent render', fieldsetTitle);
-  console.log('MyFirstComponent render2', Boolean(fieldsetTitle));
 
   // {
   //   fieldsetTitle && <legend>{fieldsetTitle}</legend>;
@@ -22,16 +24,22 @@ export const MyFirstComponent = ({
   //   return fieldsetTitle && <legend>{fieldsetTitle}</legend>;
   // }
 
+  useEffect(() => {
+    if (typeof value === 'boolean') {
+      setInputValue(value ? 'Sim' : 'Não');
+    }
+  }, [value]);
+
   return (
     <fieldset>
       {fieldsetTitle && <legend>{fieldsetTitle}</legend>}
       <label htmlFor={inputName}>{labelText}: </label>
       <input
-        type='text'
+        type={FormComponentEnum.TEXT}
         name={inputName}
         id={inputName}
         placeholder={placeholderText}
-        value={value}
+        value={inputValue}
       />
     </fieldset>
   );
