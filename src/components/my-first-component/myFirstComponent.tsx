@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormComponentEnum, FormComponentProps } from '../types';
 
 interface MyFirstComponentProps extends FormComponentProps {
