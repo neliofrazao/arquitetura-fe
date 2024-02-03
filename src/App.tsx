@@ -5,8 +5,14 @@ function App() {
   return (
     // react Fragment
     <>
-      <MyFirstComponent inputName='nome' labelText='Nome' fieldsetTitle='Input de Nome' />
-      <MyFirstComponent inputName='email' labelText='Email'  />
+      <MyFirstComponent
+        inputName='nome'
+        labelText='Nome'
+        fieldsetTitle='Input de Nome'
+        placeholderText='Digite o nome corretamente'
+        value='Valor inicial'
+      />
+      <MyFirstComponent inputName='email' labelText='Email' value='email@email.com' />
       <MySecondComponent />
     </>
   );
