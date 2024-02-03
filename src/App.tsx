@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { CounterClick, MyFirstComponent, MySecondComponent } from './components';
+import { InputComponent } from './components/form-components';
 
 interface Address {
   cep: string;
@@ -37,7 +38,7 @@ function App() {
   const abort = new AbortController();
   useEffect(() => {
     setIsMount(true);
-    fetch(`https://viacep.com.br/ws/${cepValue}/jsson/`, {
+    fetch(`https://viacep.com.br/ws/${cepValue}/json/`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -60,9 +61,10 @@ function App() {
   return (
     // react Fragment
     <>
-      <button onClick={() => handleCepChange('58036442')}>Buscar CEP</button>
-      <CounterClick />
-      <MyFirstComponent
+      <InputComponent />
+      {/* <button onClick={() => handleCepChange('58036442')}>Buscar CEP</button>
+      <CounterClick /> */}
+      {/* <MyFirstComponent
         inputName='nome'
         labelText='Nome'
         fieldsetTitle='Input de Nome'
@@ -70,7 +72,7 @@ function App() {
         value={address.bairro}
       />
       <MyFirstComponent inputName='email' labelText='Email' value='email@email.com' />
-      <MySecondComponent />
+      <MySecondComponent /> */}
     </>
   );
 }

@@ -1,7 +1,7 @@
 type ValueType = string | number | boolean;
 
 export interface FormComponentProps {
-  value: ValueType;
+  value: string;
   labelText: string;
   inputName: string;
   fieldsetTitle?: string;
