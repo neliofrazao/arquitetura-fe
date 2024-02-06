@@ -5,6 +5,11 @@ import { DisciplineResponse, getDiscipline } from '../../services';
 export const DisciplinasDetalhe = () => {
   const [discipline, setDiscipline] = useState<DisciplineResponse>({} as DisciplineResponse);
   const [isLoad, setIsload] = useState(false);
+  // useParams() é um hook do React Router que permite acessar os parâmetros da URL definidos nas rotas. Quando uma rota corresponde
+  // a uma URL com parâmetros, como por exemplo /disciplinas/:id(Olhar as rotas no aqrquivo main.tsx), o React Router extrai esses parâmetros e os
+  // disponibiliza por meio do hook useParams().
+  // No caso desse código, estamos desestruturando o objeto retornado por useParams() e pegando o valor do parâmetro id. Isso significa
+  // que se a URL atual corresponder a /disciplinas/123, id terá o valor '123'.
   const { id } = useParams();
   console.log(id);
 
