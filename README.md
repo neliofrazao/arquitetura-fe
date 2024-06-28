@@ -44,19 +44,15 @@
 
 Projeto desenvolvido para servir de apoio e referência para os alunos de pós graduação em Desenvolvimento de Aplicações Web na disciplina de Introdução a programação com scripts
 
-# Getting Started with Create React App
-
-Este projeto foi desenvolvido com [Create React App](https://github.com/facebook/create-react-app).
-
 
 ## Available Scripts
 
 No diretório do projeto, você pode executar:
 
-### `npm start`
+### `npm run dev`
 
 Executa o aplicativo no modo de desenvolvimento.
-Open [http://localhost:3000](http://localhost:3000)  para visualizá-lo em seu navegador.
+Open [http://localhost:5173/](http://localhost:5173/)  para visualizá-lo em seu navegador.
 
 
 ### JSON Server
