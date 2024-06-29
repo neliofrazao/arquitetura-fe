@@ -1,15 +1,17 @@
+import { Container } from 'react-bootstrap'
+import { Header } from '../../components'
 import './wrapper.css'
 
 interface WrapperProps {
-  title: string,
+  
   children: React.ReactNode
 }
 
-export const Wrapper = ({ title, children }: WrapperProps): JSX.Element => (
+export const Wrapper = ({ children }: WrapperProps): JSX.Element => (
   <>
-    <h1>{title}</h1>
-    <div className='wrapper'>
+    <Header />
+    <Container>
       {children}
-    </div>
+    </Container>
   </>
 )
