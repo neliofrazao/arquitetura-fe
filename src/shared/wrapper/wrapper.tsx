@@ -1,17 +1,13 @@
 import { Container } from 'react-bootstrap'
 import { Header } from '../../components'
+import { Outlet } from 'react-router-dom'
 import './wrapper.css'
 
-interface WrapperProps {
-  
-  children: React.ReactNode
-}
-
-export const Wrapper = ({ children }: WrapperProps): JSX.Element => (
+export const Wrapper = (): JSX.Element => (
   <>
     <Header />
     <Container>
-      {children}
+      <Outlet />
     </Container>
   </>
 )

@@ -1,9 +1,7 @@
-import { Wrapper } from "../../shared"
-
 export const Student = () => {
   return (
-    <Wrapper>
+    <p>
       Conteudo da minha Página do estudante
-    </Wrapper>
+    </p>
   )
 }
