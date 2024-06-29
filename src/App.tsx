@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 import { Card } from './components';
 import { Wrapper } from './shared'
@@ -28,16 +29,25 @@ const cardMock:Cards[]  = [
 
 
 function App() {
+  const [showCards, setShowCards] = useState<boolean>(true)
+
+  const onClickShowCards = () => {
+    setShowCards(!showCards)
+  }
+
+  console.log(showCards)
   return (
     // fragmento do react, React.Fragment
     // <> =  Shortcut  do React.Fragment
     <>
+    <button onClick={onClickShowCards}>{showCards ? 'Esconder' : 'Mostrar'} Caixas</button>
       <Wrapper title='Disciplina'>
-        <>
+        
+        <div className={showCards ? 'show' : 'hide'}>
           {cardMock.length && cardMock.map((card) => (
             <Card title={card.title} text={card.text} complement={card.complement} />
           ))}
-        </>
+        </div>
       </Wrapper>
     <Wrapper title='Sobre o curso'>  
         <p>
