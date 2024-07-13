@@ -1,12 +1,13 @@
 import {  Container, Row } from "react-bootstrap"
 import { CardDisciplines, CardStudent } from "../../components"
-import { CourseResponse, getCourses, getStudent, StudentResponde } from "../../services"
+import { getStudent, StudentResponde,getAllDisciplines } from "../../services"
 import { useEffect, useState } from "react"
 import { Loading } from "../../shared"
+import { DisciplineType } from "../../types"
 
 
 export const Home = () => {
-  const [courser, setCourser] = useState<CourseResponse[]>([]);
+  const [courser, setCourser] = useState<DisciplineType[]>([]);
   const [student, setStudent] = useState<StudentResponde[]>([])
   const [isLoading, setIsLoading ] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
@@ -21,7 +22,7 @@ export const Home = () => {
 
         // desestruturação de array
         // coursesData = [0] studentData = [1]
-        const [coursesData, studentData]  = await Promise.all([getCourses(), getStudent()])
+        const [coursesData, studentData]  = await Promise.all([getAllDisciplines(), getStudent()])
         // Espera todas as promessas serem resolvidas
         // a velocidade de execução é a mesma de uma única promessa
 
@@ -66,13 +67,9 @@ export const Home = () => {
     <>
       <Row className="gap-2"> 
       <h3 className='mb-3'>Disciplinas</h3>
-      {courser.map((discipline) => 
-      <CardDisciplines
-        key={discipline.id}
-        title={discipline.name}
-        description={discipline.description}
-        workload={discipline.workload} />
-      )}
+       
+      <CardDisciplines disciplines={courser} />
+       
       </Row>
 
       <Row className="mt-5"> 
