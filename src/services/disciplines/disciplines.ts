@@ -13,3 +13,7 @@ export const getDiscipline = async (id: string): Promise<DisciplineType> => {
   const response = await instace.get(`/disciplinas/${id}`);
   return response.data;
 }
+
+export const postDiscipline = async (data: DisciplineType) => {
+  await instace.post('/disciplinas', data);
+}

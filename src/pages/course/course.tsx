@@ -1,7 +1,12 @@
+import { Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom";
+
 export const Course = () => {
+  const navigate = useNavigate();
+  const handleClickNewCourse = () => navigate("/cursos/novo-curso")
   return (
     <p>
-      Conteudo da minha Página do Curso
+      <Button onClick={handleClickNewCourse}>Novo Curso</Button>
     </p>
   )
 }

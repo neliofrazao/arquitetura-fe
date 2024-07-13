@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { getDiscipline } from "../../services";
 import { DisciplineType } from "../../types";
-import { Card, Button, ListGroup } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 
 export const CourseDetail = () => {
     const { id } = useParams();
