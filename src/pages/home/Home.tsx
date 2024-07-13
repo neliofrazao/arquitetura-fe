@@ -16,8 +16,16 @@ export const Home = () => {
     const getData = async () => {
       setIsLoading(true)
       try {
-        const coursesData = await getCourses();
-        const studentData = await getStudent()
+        // const coursesData = await getCourses();
+        // const studentData = await getStudent();
+
+        // desestruturação de array
+        // coursesData = [0] studentData = [1]
+        const [coursesData, studentData]  = await Promise.all([getCourses(), getStudent()])
+        // Espera todas as promessas serem resolvidas
+        // a velocidade de execução é a mesma de uma única promessa
+
+        //  const data  = await Promise.all([getCourses(), getStudent()])
         setCourser(coursesData);
         setStudent(studentData)
         console.log('studentData', studentData)
