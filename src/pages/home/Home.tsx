@@ -1,45 +1,35 @@
-import {   Row } from "react-bootstrap"
+import {  Container, Row } from "react-bootstrap"
 import { CardDisciplines, CardStudent } from "../../components"
-import { CourseResponse, getCourses } from "../../services"
+import { CourseResponse, getCourses, getStudent, StudentResponde } from "../../services"
 import { useEffect, useState } from "react"
+import { Loading } from "../../shared"
 
-const students = [
-  {
-    id:1,
-    name: "Pessoa da Silva",
-    course: "Sistemas para internet",
-    registration: "003",
-  },
-  {
-    id:2,
-    name: "Pessoa da Silva",
-    course: "Sistemas para internet",
-    registration: "003",
-  },
-  {
-    id:3,
-    name: "Pessoa da Silva",
-    course: "Sistemas para internet",
-    registration: "003",
-  },
-]
 
 export const Home = () => {
   const [courser, setCourser] = useState<CourseResponse[]>([]);
+  const [student, setStudent] = useState<StudentResponde[]>([])
+  const [isLoading, setIsLoading ] = useState<boolean>(false)
+  const [hasError, setHasError] = useState<boolean>(false)
 
 
   useEffect(() => {
-    const getDisciplines = async () => {
+    const getData = async () => {
+      setIsLoading(true)
       try {
-        const data = await getCourses();
-        setCourser(data);
+        const coursesData = await getCourses();
+        const studentData = await getStudent()
+        setCourser(coursesData);
+        setStudent(studentData)
+        console.log('studentData', studentData)
       } catch(error){
         console.log('error', error);
+        setHasError(true)
       } finally {
-        console.log('finally'); 
+        
+        setIsLoading(false) 
       }
     }
-    getDisciplines();
+    getData();
   }, [])
 
   // const erase = async (id: number) => {
@@ -49,16 +39,27 @@ export const Home = () => {
   //   setCourser(courser.filter((discipline) => discipline.id !== id))
   // } 
   
-  console.log('courser', courser);  
+  console.log('hasError', hasError);  
  
+  if (isLoading) {
+    return <Loading /> 
+  }
 
+  if(hasError) {
+    return (
+      <Container style={{textAlign: 'center', margin: '30px 0'}}>
+        <h3>Houve um problema!!</h3>
+        <h4>Por favor tente Novamente mais tarde</h4>
+      </Container>
+    )
+  }
 
   return (  
-    <>   
-    <Row className="gap-2"> 
+    <>
+      <Row className="gap-2"> 
       <h3 className='mb-3'>Disciplinas</h3>
       {courser.map((discipline) => 
-       <CardDisciplines
+      <CardDisciplines
         key={discipline.id}
         title={discipline.name}
         description={discipline.description}
@@ -68,7 +69,7 @@ export const Home = () => {
 
       <Row className="mt-5"> 
         <h3 className='mb-3'>Alunos</h3>
-        {students.map((student)=> (
+        {student.map((student)=> (
           <CardStudent
             key={student.id}
             name={student.name} 
@@ -77,7 +78,7 @@ export const Home = () => {
           />
         ))}
       </Row>
-    </>  
+  </>  
     
   )
 }
