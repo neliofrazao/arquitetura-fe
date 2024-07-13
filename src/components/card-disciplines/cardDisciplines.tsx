@@ -7,7 +7,7 @@ interface CardDisciplinesProps {
 }
 
 export const CardDisciplines = ({title, description, workload }: CardDisciplinesProps) => (
-    <Col md={4} >
+    <Col md={3}>
       <Card style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Title style={{ fontSize: '16px'}}>{title}</Card.Title>
