@@ -74,22 +74,22 @@ Crie um arquivo de nome _db.json_ na raiz do projeto.
 
 ```json
 {
-  "alunos": [
+  "filmes": [
     {
-      "id": 1,
-      "name": "Laura Eliane Evelyn Gonçalves",
-      "registration": "001",
-      "course": "Sistemas para internet"
-    }
-  ],
-  "disciplinas": [
+      "id": "1",
+      "titulo": "Matrix",
+      "genero": "Ficção Científica",
+      "estrelas": 5,
+      "sinopse": "Um hacker descobre a verdade sobre a realidade.",
+      "assistido": true
+    },
     {
-      "id": 1,
-      "name": "Introdução a progração com scripts",
-      "courseWorkload": "36h",
-      "professor": "Tiago Daniel Fernando Baptista",
-      "status": "Obrigatória",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      "id": "2",
+      "titulo": "A Origem",
+      "genero": "Ação",
+      "estrelas": 4,
+      "sinopse": "Um ladrão que invade sonhos precisa de uma última missão.",
+      "assistido": false
     }
   ]
 }
@@ -103,25 +103,17 @@ Execute o comando para inicar o servidor. Por padrão a API vai funcionar no end
 json-server --watch db.json
 ```
 
-**Rotas** Aluno:
+**Rotas** filme:
 
 | Request    | URL       | Observações                     |
 | ---------- | --------- | ------------------------------- |
-| **GET**    | /alunos   | Busca todos os alunos           |
-| **GET**    | /alunos/1 | Busca por um aluno              |
-| **POST**   | /alunos   | Salva um aluno na base de dados |
-| **PUT**    | /alunos/1 | Atualiza os dados do aluno      |
-| **DELETE** | /alunos/1 | Remove um aluno                 |
+| **GET**    | /filmes   | Busca todos os filmes           |
+| **GET**    | /filmes/1 | Busca por um filme              |
+| **POST**   | /filmes   | Salva um filme na base de dados |
+| **PUT**    | /filmes/1 | Atualiza os dados do filme      |
+| **DELETE** | /filmes/1 | Remove um filme                 |
 
-**Rotas** Disciplina:
 
-| Request    | URL            | Observações                            |
-| ---------- | -------------- | -------------------------------------- |
-| **GET**    | /disciplinas   | Busca todos as disciplinas             |
-| **GET**    | /disciplinas/1 | Busca por uma disciplinas              |
-| **POST**   | /disciplinas   | Salva uma disciplinas na base de dados |
-| **PUT**    | /disciplinas/1 | Atualiza os dados de uma disciplinas   |
-| **DELETE** | /disciplinas/1 | Remove uma disciplinas                 |
 
 ## Desafio - PROJETO RICK AND MORTY API
 
