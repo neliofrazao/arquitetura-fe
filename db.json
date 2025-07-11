@@ -1,0 +1,20 @@
+{
+  "filmes": [
+    {
+      "id": "1",
+      "titulo": "Matrix",
+      "genero": "Ficção Científica",
+      "estrelas": 5,
+      "sinopse": "Um hacker descobre a verdade sobre a realidade.",
+      "assistido": true
+    },
+    {
+      "id": "2",
+      "titulo": "A Origem",
+      "genero": "Ação",
+      "estrelas": 4,
+      "sinopse": "Um ladrão que invade sonhos precisa de uma última missão.",
+      "assistido": false
+    }
+  ]
+}

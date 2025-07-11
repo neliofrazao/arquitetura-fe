@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.tsx
+import { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+  Link,
+} from "react-router-dom";
+import ListaFilmes from "./pages/ListaFilmes";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Filme {
+  id: number;
+  titulo: string;
+  genero: string;
+  estrelas: number;
+  sinopse: string;
+  assistido: boolean;
 }
 
-export default App
+
+
+function DetalhesFilme() {
+  const { id } = useParams();
+  const [filme, setFilme] = useState<Filme | null>(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/filmes/${id}`)
+      .then((res) => res.json())
+      .then(setFilme);
+  }, [id]);
+
+  if (!filme) return <p>Carregando...</p>;
+
+  return (
+    <div className="detalhes">
+      <h2>{filme.titulo}</h2>
+      <p><strong>Gênero:</strong> {filme.genero}</p>
+      <p><strong>Estrelas:</strong> {"★".repeat(filme.estrelas)}</p>
+      <p><strong>Status:</strong> {filme.assistido ? "Assistido" : "Não assistido"}</p>
+      <p><strong>Sinopse:</strong> {filme.sinopse}</p>
+      <Link to="/filmes">Voltar</Link>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<ListaFilmes />} />
+        <Route path="/filmes/:id" element={<DetalhesFilme />} />
+        <Route path="*" element={<p>404 - Página não encontrada</p>} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
