@@ -16,3 +16,32 @@ html, body {
     width: 100%;
 }
 
+.button-primary {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.button-primary:hover {
+    background: #0056b3;
+}
+
+.button-danger {
+    background: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.button-danger:hover {
+    background: #a71d2a;
+}

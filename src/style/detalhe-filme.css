@@ -21,6 +21,11 @@
 }
 
 
+.detalhes-filme-actions {
+    display: flex;
+    gap: 12px;
+}
+
 
 .input-text,
 .select {
@@ -30,20 +35,6 @@
     font-size: 1rem;
 }
 
-.filtros button {
-    padding: 8px 18px;
-    background: #1976d2;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s;
-}
-
-.filtros button:hover {
-    background: #125ea6;
-}
 
 .lista-filmes-grid {
     display: grid;

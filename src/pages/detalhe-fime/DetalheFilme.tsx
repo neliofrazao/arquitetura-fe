@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "../../style/detalhe-filme.css";
 
 interface Filme {
@@ -14,6 +14,7 @@ interface Filme {
 export default function DetalhesFilme() {
   const { id } = useParams();
   const [filme, setFilme] = useState<Filme | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:3000/filmes/${id}`)
@@ -21,13 +22,24 @@ export default function DetalhesFilme() {
       .then(setFilme);
   }, [id]);
 
+  const handleDelete = async () => {
+    if (!filme) return;
+    if (!window.confirm("Tem certeza que deseja deletar este filme?")) return;
+    await fetch(`http://localhost:3000/filmes/${filme.id}`, { method: "DELETE" });
+    alert("Filme deletado");
+    navigate('/')
+  };
+
   if (!filme) return <p>Carregando...</p>;
 
   return (
-    <div className="lista-filmes-container">
+    <div className="container">
       <header className="container-header">
         <h1>Meus Filmes</h1>
-        <button>Editar filme</button>
+        <div className="detalhes-filme-actions">
+          <button className="button-primary">Editar filme</button>
+          <button onClick={handleDelete} className="button-danger">Deletar filme</button>
+        </div>
       </header>
       <h2>{filme.titulo}</h2>
       <div className="detalhes-filme-info">

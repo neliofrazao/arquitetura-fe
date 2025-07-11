@@ -30,8 +30,7 @@ export default function ListaFilmes() {
       <header className="container-header">
         <h1>Meus Filmes</h1>
         <button
-          onClick={() => {
-            
+          onClick={() => {            
             navigate("/cadastrar-filme");
           }}
         >
