@@ -1,24 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Course, CourseDetail, Home, NewCourse, Student } from './pages';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Wrapper } from './shared';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
 
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Wrapper />} >
-          <Route  index element={<Home />} />
-          <Route path="/cursos" element={<Course />} />
-          <Route path="/cursos/:id" element={<CourseDetail />} />
-          <Route path="/cursos/novo-curso" element={<NewCourse />} />
-          <Route path="/cursos/editar-curso/:id" element={<p>Editar Curso</p>} />
-          <Route path="/estudante" element={<Student />} />
-        </Route>
-      </Routes>   
-    </BrowserRouter>
-  </React.StrictMode>,
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
 )
