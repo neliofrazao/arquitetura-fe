@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "../../style/lista-filmes.css";
-
 
 // criar interface como shared entre os componentes
 interface Filme {
@@ -16,6 +15,7 @@ interface Filme {
 export default function ListaFilmes() {
   const [filmes, setFilmes] = useState<Filme[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const queryString = searchParams.toString();
@@ -29,7 +29,14 @@ export default function ListaFilmes() {
     <div className="lista-filmes-container">
       <header className="container-header">
         <h1>Meus Filmes</h1>
-        <button onClick={() => setSearchParams({})}>Adicionar Filme</button>
+        <button
+          onClick={() => {
+            
+            navigate("/cadastrar-filme");
+          }}
+        >
+          Adicionar Filme
+        </button>
       </header>
       <div className="filtros">
         <input

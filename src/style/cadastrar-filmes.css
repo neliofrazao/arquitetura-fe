@@ -1,0 +1,103 @@
+/* cadastrar-filmes.css */
+
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.container-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+}
+
+.container-header button {
+    background: #eee;
+    border: none;
+    color: #333;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.container-header button:hover {
+    background: #ddd;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-weight: 500;
+    color: #444;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #fafafa;
+    transition: border 0.2s;
+    color: #333;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #0078d4;
+    outline: none;
+}
+
+.form-field textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.form-field span {
+    color: #d32f2f;
+    font-size: 0.95em;
+    margin-top: 2px;
+}
+
+button[type="submit"] {
+    margin-top: 18px;
+    background: #0078d4;
+    color: #fff;
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #005fa3;
+}
