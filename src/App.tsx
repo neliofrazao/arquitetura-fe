@@ -8,6 +8,8 @@ import {
   Link,
 } from "react-router-dom";
 import ListaFilmes from "./pages/ListaFilmes";
+import "./style/global.css";
+
 
 interface Filme {
   id: number;
@@ -43,6 +45,7 @@ function DetalhesFilme() {
     </div>
   );
 }
+
 
 function App() {
   return (

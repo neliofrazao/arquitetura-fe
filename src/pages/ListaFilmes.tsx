@@ -28,6 +28,8 @@ export default function ListaFilmes() {
         // criar um container shared, com titulo como props
         <div className="lista-filmes-container">
             <h1>Meus Filmes</h1>
+            
+            <Link to="/filmes/novo">Adicionar Filme</Link>
              <div className="filtros">
                 <input
                     className="input-text"
