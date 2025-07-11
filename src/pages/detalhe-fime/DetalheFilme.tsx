@@ -37,7 +37,7 @@ export default function DetalhesFilme() {
       <header className="container-header">
         <h1>Meus Filmes</h1>
         <div className="detalhes-filme-actions">
-          <button className="button-primary">Editar filme</button>
+          <button className="button-primary" onClick={()=>navigate(`/editar-filme/${id}`)}>Editar filme</button>
           <button onClick={handleDelete} className="button-danger">Deletar filme</button>
         </div>
       </header>
