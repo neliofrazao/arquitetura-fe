@@ -1,0 +1,21 @@
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.container h1 {
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+    color: #222;
+}

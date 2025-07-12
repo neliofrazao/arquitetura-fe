@@ -1,12 +1,12 @@
+import { Container } from "../../shared/container";
 import "../../style/lista-filmes.css";
 
 export const ListaFilmes = () => {
   return (
-    <div className="container">
-      <div className="container-header">
-        <h1>Lista de Filmes</h1>
-        <button className="btn-primary">Adicionar Filme</button>
-      </div>
-    </div>
+    <Container 
+      title="Meus Filmes"
+      actionButton={<button className="btn-primary">Adicionar Filme</button>}>
+      Qualquer texto aqui
+    </Container>
   );
 };
