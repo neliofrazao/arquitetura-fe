@@ -45,3 +45,9 @@ html, body {
 .button-danger:hover {
     background: #a71d2a;
 }
+
+.button-disabled {
+    background: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}

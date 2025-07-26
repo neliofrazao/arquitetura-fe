@@ -3,6 +3,7 @@ import { BoxCard } from "../../components/box-card";
 import { Container } from "../../shared/container";
 import "../../style/lista-filmes.css";
 import type { Filme } from "../../shared/types";
+import { Link } from "react-router-dom";
 
 export const ListaFilmes = () => {
   const [filmes, setFilmes] = useState<Filme[]>([]);
@@ -52,7 +53,7 @@ export const ListaFilmes = () => {
   return (
     <Container
       title="Exemplo"
-      actionButton={<button className="btn-primary">Adicionar Filme</button>}
+      actionButton={<Link className="button-primary" to="/cadastrar-filme">Adicionar Filme</Link>}
     >
       <div className="lista-filmes-grid">
         {filmes?.length ? (
