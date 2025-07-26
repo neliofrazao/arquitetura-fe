@@ -1,21 +1,52 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Container } from "../../shared/container";
 import "../../style/cadastrar-filmes.css";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchDetalheFilme } from "../../service/fetch-detalhe-filme";
 
 type Inputs = {
   titulo: string;
   genero: string;
   estrelas: number;
   sinopse: string;
-  assistido: boolean;
+  assistido: "sim" | "nao"; // Define o tipo assistido como "sim" ou "nao"
 };
 
 export const CriarFilme = () => {
-  const { register, handleSubmit, formState } = useForm<Inputs>();
+  const { register, handleSubmit, formState, setValue } = useForm<Inputs>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    if(id) {
+      setIsEditing(true);
+      return;
+    }
+    setIsEditing(false);
+  }, [id]);
+
+  useEffect(() => {
+    const fetchFilme = async () => {
+      if(!id) return;
+      try {
+        const data = await fetchDetalheFilme(id);
+        setValue("titulo", data.titulo);
+        setValue("genero", data.genero);
+        setValue("estrelas", data.estrelas);
+        setValue("sinopse", data.sinopse);
+        setValue("assistido", data.assistido ? "sim" : "nao");
+      } catch (error) {
+        console.error("Erro ao buscar filme:", error);
+      }
+    }
+
+    fetchFilme()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
   const onSubmit = (data: Inputs) => {
     try {
       setIsLoading(true);
@@ -35,9 +66,10 @@ export const CriarFilme = () => {
     }
   };
 
+  console.log("isEditing", isEditing);
   return (
     <Container
-      title="Cadastrar Filme"
+      title={isEditing ? "Editar Filme" : "Cadastrar Filme"}
       actionButton={
         <Link className="button-primary" to="/">
           Voltar

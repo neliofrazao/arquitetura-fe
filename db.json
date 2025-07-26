@@ -1,7 +1,7 @@
 {
   "filmes": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Matrix",
       "genero": "Ficção Científica",
       "estrelas": 5,
@@ -9,12 +9,20 @@
       "assistido": true
     },
     {
-      "id": 2,
-      "titulo": "A Origem",
+      "id": "123a",
+      "titulo": "A Origem Filme de gente sonhando",
       "genero": "Ação",
       "estrelas": 4,
       "sinopse": "Um ladrão que invade sonhos precisa de uma última missão.",
-      "assistido": false
+      "assistido": "nao"
+    },
+    {
+      "id": "fec3",
+      "titulo": "A Origem",
+      "genero": "Terror",
+      "estrelas": "5",
+      "sinopse": "Vampiro",
+      "assistido": "sim"
     }
   ]
 }

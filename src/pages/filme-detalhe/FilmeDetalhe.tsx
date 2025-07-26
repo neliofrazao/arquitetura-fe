@@ -59,7 +59,9 @@ export const FilmeDetalhe = () => {
           <Link className="button-primary" to={"/"}>
             Voltar
           </Link>
-          <button className="button-primary">Editar filme</button>
+           <Link className="button-primary" to={`/editar-filme/${id}`}>
+            Editar Filme
+          </Link>
           <button className="button-danger" onClick={handleDelete}>Deletar Filme</button>
         </div>
       }

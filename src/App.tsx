@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<ListaFilmes />} />
         <Route path="/filme/:id" element={<FilmeDetalhe />} />
         <Route path="/cadastrar-filme" element={<CriarFilme />} />
+        <Route path="/editar-filme/:id" element={<CriarFilme />} />
       </Routes>
     </BrowserRouter>
   );

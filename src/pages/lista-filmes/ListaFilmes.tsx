@@ -3,21 +3,22 @@ import { BoxCard } from "../../components/box-card";
 import { Container } from "../../shared/container";
 import "../../style/lista-filmes.css";
 import type { Filme } from "../../shared/types";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const ListaFilmes = () => {
   const [filmes, setFilmes] = useState<Filme[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<boolean>(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    fetch("http://localhost:3000/filmes")
+    const queryString = searchParams.toString();
+    fetch(`http://localhost:3000/filmes?${queryString}`)
       .then((response) => {
         // Verifica se a resposta é ok (status 200-299)
         if (!response.ok) {
           setError(true);
           throw new Error("Erro ao buscar filmes");
-          
         }
         return response.json();
       })
@@ -30,7 +31,7 @@ export const ListaFilmes = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [searchParams]);
 
   if (loading) {
     return (
@@ -48,13 +49,28 @@ export const ListaFilmes = () => {
     );
   }
 
-  console.log("error:", error);
+  console.log("searchParams", searchParams);
 
   return (
     <Container
-      title="Exemplo"
-      actionButton={<Link className="button-primary" to="/cadastrar-filme">Adicionar Filme</Link>}
+      title="Meus filmes"
+      actionButton={
+        <Link className="button-primary" to="/cadastrar-filme">
+          Adicionar Filme
+        </Link>
+      }
     >
+      <div className="filtros">
+        <input
+          type="text"
+          placeholder="Buscar por título"
+          className="input-text"
+          value={searchParams.get("titulo") || ""}
+          onChange={(e) => { setSearchParams({ titulo: e.target.value }); }}
+        />
+        <button className="button-primary" onClick={() => setSearchParams({})}>Limpar busca</button>
+      </div>
+
       <div className="lista-filmes-grid">
         {filmes?.length ? (
           filmes.map((filme) => (
