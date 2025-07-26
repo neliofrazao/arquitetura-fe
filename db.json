@@ -1,7 +1,7 @@
 {
   "filmes": [
     {
-      "id": "1",
+      "id": 1,
       "titulo": "Matrix",
       "genero": "Ficção Científica",
       "estrelas": 5,
@@ -9,7 +9,7 @@
       "assistido": true
     },
     {
-      "id": "2",
+      "id": 2,
       "titulo": "A Origem",
       "genero": "Ação",
       "estrelas": 4,

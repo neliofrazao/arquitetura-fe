@@ -1,40 +1,73 @@
+import { useEffect, useState } from "react";
 import { BoxCard } from "../../components/box-card";
 import { Container } from "../../shared/container";
 import "../../style/lista-filmes.css";
-
-const lista = [
-  {
-    id: 1,
-    titulo: "Filme 1",
-    genero: "Terror",
-    estrelas: "Estrela 1",
-    assistido: true,
-  },
-  {
-    id: 2,
-    titulo: "Filme 2",
-    genero: "Ação",
-    estrelas: "Estrela 2",
-    assistido: false,
-  },
-];
+import type { Filme } from "../../shared/types";
 
 export const ListaFilmes = () => {
+  const [filmes, setFilmes] = useState<Filme[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/filmes2")
+      .then((response) => {
+        // Verifica se a resposta é ok (status 200-299)
+        if (!response.ok) {
+          setError(true);
+          throw new Error("Erro ao buscar filmes");
+          
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setFilmes(data);
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container">
+        <p>Carregando...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container">
+        <p>Erro ao carregar filmes.</p>
+      </div>
+    );
+  }
+
+  console.log("error:", error);
+
   return (
     <Container
-      title="Meus Filmes"
+      title="Exemplo"
       actionButton={<button className="btn-primary">Adicionar Filme</button>}
     >
       <div className="lista-filmes-grid">
-        {lista.map((filme) => (
-          <BoxCard
-            key={filme.id}
-            title={filme.titulo}
-            genre={filme.genero}
-            stars={filme.estrelas}
-            watched={filme.assistido}
-          />
-        ))}
+        {filmes?.length ? (
+          filmes.map((filme) => (
+            <BoxCard
+              key={filme.id}
+              titulo={filme.titulo}
+              genero={filme.genero}
+              estrelas={filme.estrelas}
+              assistido={filme.assistido}
+            />
+          ))
+        ) : (
+          <p>Nenhum filme encontrado.</p>
+        )}
       </div>
     </Container>
   );
