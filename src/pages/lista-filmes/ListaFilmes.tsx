@@ -10,7 +10,7 @@ export const ListaFilmes = () => {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("http://localhost:3000/filmes2")
+    fetch("http://localhost:3000/filmes")
       .then((response) => {
         // Verifica se a resposta é ok (status 200-299)
         if (!response.ok) {
@@ -59,6 +59,7 @@ export const ListaFilmes = () => {
           filmes.map((filme) => (
             <BoxCard
               key={filme.id}
+              id={filme.id}
               titulo={filme.titulo}
               genero={filme.genero}
               estrelas={filme.estrelas}
